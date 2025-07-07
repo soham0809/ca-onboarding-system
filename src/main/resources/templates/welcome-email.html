@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Industry Academia Community</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Industry Academia Community!</h1>
+    </div>
+    
+    <div class="content">
+        <p>Dear <span th:text="${name}">User</span>,</p>
+        
+        <p>Welcome to the Industry Academia Community! We're excited to have you join us on this journey of professional growth and development.</p>
+        
+        <p>To get started, please click the button below to access your personalized dashboard:</p>
+        
+        <a th:href="${utmLink}" class="button">Access Dashboard</a>
+        
+        <p>Here's what you can expect from our community:</p>
+        <ul>
+            <li>Access to industry experts and mentors</li>
+            <li>Professional development resources</li>
+            <li>Networking opportunities</li>
+            <li>Regular updates on industry trends</li>
+        </ul>
+        
+        <p>If you have any questions, feel free to reach out to our support team.</p>
+    </div>
+    
+    <div class="footer">
+        <p>This email was sent by Industry Academia Community</p>
+        <p>© 2025 Cloud Counselage Pvt. Ltd. All rights reserved.</p>
+    </div>
+</body>
+</html>
