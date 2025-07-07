@@ -10,6 +10,8 @@ import org.thymeleaf.context.Context;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
+import java.util.Objects;
+
 @Service
 public class EmailService {
 
@@ -19,13 +21,23 @@ public class EmailService {
     @Autowired
     private TemplateEngine templateEngine;
 
+    @Autowired
+    private QRCodeService qrCodeService;
+
     public void sendWelcomeEmail(String to, String name, String utmLink) throws MessagingException {
         try {
             System.out.println("Preparing welcome email for: " + name);
+            System.out.println("UTM Link for QR code: " + utmLink);
             
+            // Generate QR code for UTM link
+            String qrCodeBase64 = qrCodeService.generateQRCodeBase64(utmLink);
+            System.out.println("QR code generation result: " + (qrCodeBase64 != null ? "Success" : "Failed"));
+
             Context context = new Context();
             context.setVariable("name", name);
             context.setVariable("utmLink", utmLink);
+            context.setVariable("qrCodeBase64", Objects.requireNonNullElse(qrCodeBase64, ""));
+            System.out.println("QR code added to email context: " + (qrCodeBase64 != null && !qrCodeBase64.isEmpty()));
 
             String emailContent = templateEngine.process("welcome-email", context);
             System.out.println("Email template processed successfully");

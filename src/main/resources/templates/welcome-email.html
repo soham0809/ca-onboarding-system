@@ -5,21 +5,32 @@
     <title>Welcome to Industry Academia Community</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #f9f9f9;
         }
         .header {
-            background-color: #f8f9fa;
-            padding: 20px;
+            background: linear-gradient(135deg, #0062cc, #0056b3);
+            padding: 30px;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
         }
         .content {
-            padding: 20px 0;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
         .button {
             display: inline-block;
@@ -49,9 +60,22 @@
         
         <p>Welcome to the Industry Academia Community! We're excited to have you join us on this journey of professional growth and development.</p>
         
-        <p>To get started, please click the button below to access your personalized dashboard:</p>
+        <div class="header">
+            <img src="https://cloudcounselage.com/wp-content/uploads/2019/06/Cloud-Counselage-Logo-White.png" alt="Cloud Counselage Logo" class="logo">
+            <h1>Welcome to Industry Academia Community!</h1>
+        </div>
         
-        <a th:href="${utmLink}" class="button">Access Dashboard</a>
+        <div class="content">
+            <h2>Hello <span th:text="${name}">there</span>! 👋</h2>
+            <p>We're thrilled to have you join our community of aspiring professionals!</p>
+            
+            <p>To get started, please click the button below or scan the QR code to access your personalized dashboard:</p>
+        
+        <a th:href="${utmLink}" style="display: inline-block; background: linear-gradient(135deg, #0062cc, #0056b3); color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Access Dashboard</a>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <img th:if="${!#strings.isEmpty(qrCodeBase64)}" th:src="'data:image/png;base64,' + ${qrCodeBase64}" alt="QR Code" style="max-width: 200px; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+        </div>
         
         <p>Here's what you can expect from our community:</p>
         <ul>
@@ -64,9 +88,14 @@
         <p>If you have any questions, feel free to reach out to our support team.</p>
     </div>
     
-    <div class="footer">
+    <div style="text-align: center; padding: 20px; color: #666; font-size: 0.9em; border-top: 1px solid #eee; margin-top: 30px;">
         <p>This email was sent by Industry Academia Community</p>
         <p>© 2025 Cloud Counselage Pvt. Ltd. All rights reserved.</p>
+        <div style="margin-top: 20px;">
+            <a href="https://www.cloudcounselage.com" style="color: #0056b3; text-decoration: none; margin: 0 10px;">Website</a> |
+            <a href="https://www.linkedin.com/company/cloudcounselage" style="color: #0056b3; text-decoration: none; margin: 0 10px;">LinkedIn</a> |
+            <a href="https://www.instagram.com/cloudcounselage" style="color: #0056b3; text-decoration: none; margin: 0 10px;">Instagram</a>
+        </div>
     </div>
 </body>
 </html>
